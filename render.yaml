@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: backend-php-server
+    env: php
+    plan: free
+    buildCommand: ''
+    startCommand: ''
+    rootDir: public
+    autoDeploy: true
