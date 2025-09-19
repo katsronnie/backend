@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $to = "katenderonnie045@gmail.com";
     $subject = "NewRadio5GConsulting Contact form " . ($_POST["name"] ?? '');
     $message = $_POST["message"] ?? '';
-    $headers = "From: " . ($_POST["email"] ?? '');
+    $headers = "From: katenderonnie045@gmail.com\r\nReply-To: " . ($_POST["email"] ?? '');
 
     if (mail($to, $subject, $message, $headers)) {
         echo json_encode(["message" => "Message sent successfully!"]);
