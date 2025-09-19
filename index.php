@@ -43,6 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->Body    = $messageContent;
 
         // Send email
+        $mail->SMTPDebug = 2;  // verbose output for debugging
+        $mail->Debugoutput = 'error_log';  // logs in Render logs
         $mail->send();
         echo json_encode(["message" => "Message sent successfully!"]);
     } catch (Exception $e) {
