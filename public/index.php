@@ -2,11 +2,15 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
+
 if ($_SERVER["REQUEST_METHOD"] == "OPTIONS") {
+    // CORS preflight, no response body needed
     exit(0);
 }
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Use a valid email address here!
+    // ... handle your form and mail logic here ...
+    // Example:
     $to = "katenderonnie045@gmail.com";
     $subject = "NewRadio5GConsulting Contact form " . ($_POST["name"] ?? '');
     $message = $_POST["message"] ?? '';
@@ -19,5 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     exit;
 }
-echo json_encode(["message" => "Invalid request."]);
+
+// For all other methods (like GET)
+echo json_encode(["message" => "This endpoint is for POST requests only."]);
 ?>
