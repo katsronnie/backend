@@ -1,8 +1,17 @@
-# Use the official PHP image with Apache
-FROM php:8.2-apache
+# Use official PHP image
+FROM php:8.2-cli
 
-# Copy your PHP files into the Apache document root
-COPY public/ /var/www/html/
+# Set working directory
+WORKDIR /var/www/html
 
-# Enable Apache mod_rewrite if needed (optional)
-RUN a2enmod rewrite
+# Copy all project files to container
+COPY . .
+
+# Install required PHP extensions (if needed)
+RUN docker-php-ext-install mbstring
+
+# Expose port 10000
+EXPOSE 10000
+
+# Start PHP built-in server
+CMD ["php", "-S", "0.0.0.0:10000", "-t", "."]
