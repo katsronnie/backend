@@ -31,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->SMTPAuth   = true;
         $mail->Username   = getenv('MAIL_USER'); // Set this in Render Environment Variables
         $mail->Password   = getenv('MAIL_PASS'); // Gmail App Password
-        $mail->SMTPSecure = 'tls';
-        $mail->Port       = 587;
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port       = 465;
 
         // Email sender and recipient
         $mail->setFrom($email, $name);
